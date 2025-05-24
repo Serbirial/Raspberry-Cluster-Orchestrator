@@ -1,6 +1,6 @@
 ![Go](https://img.shields.io/badge/Language-Go-00ADD8?logo=go&logoColor=white)
 ![Raspberry Pi](https://img.shields.io/badge/Platform-Raspberry%20Pi-green?logo=raspberry-pi&logoColor=white)
-![GitHub stars](https://img.shields.io/github/stars/Serbirial/rco?style=social)
+![GitHub stars](https://img.shields.io/github/stars/Serbirial/Raspberry-Cluster-Orchestrator?style=social)
 
 # 🚀 RCO – Raspberry Cluster Orchestrator
 
