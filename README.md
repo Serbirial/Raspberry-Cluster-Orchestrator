@@ -32,7 +32,7 @@ It lets you execute commands, sync code, build/run binaries, and (not implemente
 {
   "PiWorker2": {
     "dir": "/home/USERNAME/PROJECT",
-    "cmd": ["pkill -f './PROJECT -flag1' || true", "git pull origin main", "go build"],
+    "cmd": ["pkill -f './BINARY -flag1' || true", "git pull origin main", "go build"],
     "bin": ["./BINARY", "-flag1"]
   }
 }
