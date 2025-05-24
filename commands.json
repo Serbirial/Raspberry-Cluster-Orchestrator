@@ -1,0 +1,7 @@
+{
+  "PiWorker2": {
+    "dir": "/home/USERNAME/PROJECT",
+    "cmd": ["pkill -f './PROJECT -flag1' || true", "git pull origin main", "go build"],
+    "bin": ["./BINARY", "-flag1"]
+  }
+}
