@@ -79,6 +79,8 @@ cd slave && go build && cp ./slave ../slave
 ### Configuration files
 * `workers.txt`: A text file full of all known worker/slave nodes (one per line)
 * `commands.json`: JSON file defining tasks to be executed on worker nodes.
+* `procs.txt`: A text file full of any proccesses you want the slave to export to the master.
+
 
 ### Example `workers.txt`
 
@@ -102,4 +104,15 @@ PiWorker3> 192.168.0.7
     "bin": ["./ascension", "-ws-only"]
   }
 }
+```
+
+### Example `procs.txt`
+```
+# THIS WOULD BE SLAVE 1'S TXT
+Music Bot>./ascension -remote-ws -ws-url=""
+
+# THIS WOULD BE SLAVE 2'S TXT
+Music Server>./ascension -ws-only
+
+# Now the master can get process data for both of those commands
 ```
