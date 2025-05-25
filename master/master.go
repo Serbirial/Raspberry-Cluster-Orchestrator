@@ -126,12 +126,31 @@ func sendCommand(name, addr, dir string, commands []string, bin []string, port s
 func main() {
 	jsonMode := flag.Bool("json", false, "Read per-worker commands from commands.json")
 	metricsMode := flag.Bool("metrics", false, "Gets all worker metrics, prints and then exits.")
+	processmetricsMode := flag.Bool("process-metrics", false, "Gets all watched processes metrics, prints and then exits.")
+
 	filter := flag.String("filter", "", "Only target workers whose name includes this string")
 	dirFlag := flag.String("dir", "", "Default directory to run command in on workers (if not overridden per-worker)")
 	portFlag := flag.String("port", "8000", "Port to connect to workers on")
 	flag.Parse()
 
 	var wg sync.WaitGroup
+
+	if *processmetricsMode {
+		workerFile := flag.Arg(0)
+		workers, err := readWorkers(workerFile)
+		if err != nil {
+			log.Fatalf("Failed to read workers file: %v", err)
+		}
+		for name, addr := range workers {
+			wg.Add(1)
+			go func(name, addr string) {
+				defer wg.Done()
+				sendCommand(name, addr, "", []string{"__get_procs__"}, nil, *portFlag, nil)
+			}(name, addr)
+		}
+		wg.Wait()
+		return
+	}
 
 	if *metricsMode {
 		workerFile := flag.Arg(0)
