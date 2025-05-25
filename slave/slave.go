@@ -144,9 +144,8 @@ func handleConnection(conn net.Conn) {
 				jsonOutput, err := json.MarshalIndent(fullStats, "", "  ")
 				if err != nil {
 					writer.WriteString(`{"error":"failed to marshal process stats"}` + "\n")
-				} else {
-					writer.Write(jsonOutput)
 				}
+				writer.Write(jsonOutput)
 				writer.WriteByte('\n')
 				writer.Flush()
 				continue
