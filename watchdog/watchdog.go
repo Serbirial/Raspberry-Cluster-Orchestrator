@@ -55,7 +55,7 @@ func main() {
 		timeoutSec    int
 		checkInterval int
 	)
-	flag.StringVar(&port, "port", "8000", "Port that all workers will be using.")
+	flag.StringVar(&port, "port", "8000", "Port that all workers/slaves will be using.")
 	flag.IntVar(&timeoutSec, "timeout", 2, "Timeout seconds for TCP dial.")
 	flag.IntVar(&checkInterval, "interval", 10, "Interval seconds between checks.")
 	flag.Parse()
